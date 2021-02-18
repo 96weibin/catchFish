@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>捕鱼达人</title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+    <canvas id="catchFish" width="800" height="600"></canvas>
+    <script src="./js/jQuery.js"></script>
+    <script src="./js/resources.js"></script>
+    <script src="./js/Spirit.js"></script>
+    <script src="./js/Fish.js"></script>
+    <script src="./js/Cannon.js"></script>
+    <script>
+        let oC = document.querySelector('#catchFish');
+        let ctx = oC.getContext('2d')
+
+        window.onload = async ()=>{
+            try {
+                await loadResource();
+                console.log(__g_imgs)
+            } catch (error) {
+                console.log(error)
+                alert('加载资源失败，刷新重试')
+            }
+            
+            let fish = new Fish(1);
+            fish.x =100;
+            fish.y = 100;
+            fish.rotation = 100
+            // fish.draw(ctx)
+
+            
+            let cannon = new Cannon(1);
+            cannon.draw(ctx)
+
+
+            console.log(fish)
+            // requestAnimationFrame(next)
+            // function next(){
+            //     ctx.clearRect(0,0,oC.width,oC.height);
+            //     fish.move();
+            //     fish.nextFrame()
+            //     fish.draw(ctx);
+            //     requestAnimationFrame(next)
+            // }
+
+        }
+    </script>
+
+</body>
+</html>

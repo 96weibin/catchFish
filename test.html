@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            background-color: black;
+            text-align: center;
+        }
+        canvas{
+            margin-top: 20px;
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+    
+    <canvas id="oC" width="800" height="600"></canvas>
+
+    <script>
+        let $ = document.querySelector.bind(document);
+        let oC = $('#oC');
+        let ctx = oC.getContext('2d');
+
+        class Spirit{
+            constructor(option){
+                this.x = option.x || 0;
+                this.y = option.y || 0;
+                this.w = option.w || 100;
+                this.h = option.h || 100;
+                this.c = option.c || 'yellow';
+            }
+            draw(ctx){
+                ctx.beginPath()
+                ctx.fillStyle = this.c;
+                ctx.fillRect(this.x,this.y,this.w,this.h);
+            }
+        }
+
+        class Rect extends Spirit{
+            constructor(c){
+                super({})
+                this.c = c
+            }
+        }
+
+
+        let s = new Spirit({
+            x:100,
+            y:100,
+            w:100,
+            h:100,
+            c:'pink'
+        })
+        s.draw(ctx)
+
+        let r = new Rect('black')
+        r.x = 200
+        r.draw(ctx)
+    </script>
+</body>
+</html>
